@@ -1,1 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        body {
+           background-color: #5cb85c;
+           font-family: Arial, sans-serif;
+        }
+        
+        .container {
+           max-width: 1200px;
+           margin: auto;
+           padding: 20px;
+           background-color: #fff;
+           border-radius: 8px;
+        }
+        
+        .title {
+           font-size: 36px;
+           margin-bottom: 10px;
+        }
+        
+        .subtitle {
+           font-size: 20px;
+           color: #6c757d;
+           margin-bottom: 20px;
+        }
+        
+        .form {
+           display: grid;
+           grid-template-columns: 1fr 1fr;
+           gap: 20px;
+           margin-bottom: 20px;
+        }
+        
+        .form label {
+           font-size: 18px;
+           color: #212529;
+        }
+        
+        .form input, .form select, .form textarea {
+           padding: 10px;
+           border: 1px solid #dee2e6;
+           border-radius: 8px;
+           font-size: 18px;
+        }
+        
+        .form button {
+           padding: 15px 20px;
+           background-color: #217529;
+           color: #fff;
+           border: none;
+           border-radius: 8px;
+           font-size: 18px;
+           cursor: pointer;
+        }
+        </style>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kredi Skor Tahmini</title>
+</head>
 
+<body>
+  <div class="container">
+    <h1 class="title">Kredi Skor Tahmini</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <div class="form">
+        <label for="cars">Maaş :</label>
+    	<input type="text" name="Belgeli_Maaş" placeholder="Belgeli Maaş" required="required" />
+      <label for="cars">Medeni Durum :</label>
+      <select name="Medeni_Durum" id="Medeni_Durum">
+        <option value="3">Evli</option>
+        <option value="0">Bekar</option>
+        <option value="2">Dul</option>
+        <option value="1">Boşanmış</option>
+      </select>
+      <label for="cars">Cinsiyet :</label>
+      <select name="Cinsiyet" id="Cinsiyet">
+        <option value="0">Erkek</option>
+        <option value="1">Kadın</option>
+      </select>
+      <label for="cars">Sektör :</label>
+      <select name="Sektor" id="Sektor">
+        <option value="0">Kamu Kurumu</option>
+        <option value="2">Özel Kurum</option>
+        <option value="1">Sektör Yok</option>
+      </select>
+      <label for="cars">Eğitim Durumu :</label>
+      <select name="Egitim_Durumu" id="Egitim_Durumu">
+        <option value="1">Fakülte/Lisans</option>
+        <option value="5">Yüksek Lisans</option>
+        <option value="4">Ortaögretim</option>
+        <option value="2">İlkögretim</option>
+        <option value="0">Doktora</option>
+        <option value="6">Yüksek Okul</option>
+        <option value="3">Okur-Yazar</option>
+      </select>
+      <label for="cars">Mesleği :</label>
+      <select name="Meslegi" id="Meslegi">
+        <option value="32">Memur</option>
+        <option value="4">Bankaci</option>
+        <option value="24">Isletmeci/Sanayici</option>
+        <option value="7">Denetçi</option>
+        <option value="15">Esnaf</option>
+        <option value="6">Danisman</option>
+        <option value="3">Avukat</option>
+        <option value="25">Isçi</option>
+        <option value="27">Müstesar</option>
+        <option value="45">Reklam ve Halkla Iliskiler</option>
+        <option value="19">Güvenlik Görevlisi</option>
+        <option value="48">Sigortaci</option>
+        <option value="16">Ev Hanimi</option>
+        <option value="41">Pazarlamaci/Satis Elemani</option>
+        <option value="36">Mühendis</option>
+        <option value="31">Mali Müsavir</option>
+        <option value="43">Polis</option>
+        <option value="52">Teknisyen</option>
+        <option value="60">Ögretmen</option>
+        <option value="0">Akademisyen/Ögretim Görevlisi</option>
+        <option value="38">Müteahhit</option>
+        <option value="34">Mimar</option>
+        <option value="49">Soför</option>
+        <option value="58">Çiftçi</option>
+        <option value="12">Doktor</option>
+        <option value="9">Din Görevlisi</option>
+        <option value="33">Milletvekili</option>
+        <option value="39">Nakliyeci</option>
+        <option value="35">Muhasebeci</option>
+        <option value="44">Psikolog</option>
+        <option value="20">Hakim/Savci</option>
+        <option value="11">Dis Hekimi</option>
+        <option value="27">Kimyager/Laborant</option>
+        <option value="50">Sporcu</option>
+        <option value="21">Hemsire</option>
+        <option value="2">Asker</option>
+        <option value="18">Gazeteci</option>
+        <option value="55">Tibbi Mümessil</option>
+        <option value="1">Asci</option>
+        <option value="13">Eczaci</option>
+        <option value="22">Hizmetli (Garson,Servis Elemani,Temizlik Görevlisi)</option>
+        <option value="53">Tercüman/Rehber</option>
+        <option value="14">Emlakçi</option>
+        <option value="56">Usta (Boyaci,Marangoz,Elektrikçi,Tesisatçi)</option>
+        <option value="42">Pilot</option>
+        <option value="51">Tarim Isçisi</option>
+        <option value="57">Veteriner</option>
+        <option value="47">Sekreter</option>
+        <option value="26">Kaptan</option>
+        <option value="59">Ögrenci</option>
+        <option value="40">Noter</option>
+        <option value="54">Terzi/Modaci</option>
+        <option value="28">Komisyoncu</option>
+        <option value="10">Diplomat/Bürokrat</option>
+        <option value="17">Galerici</option>
+        <option value="23">Host/Hostes</option>
+        <option value="29">Kurye</option>
+        <option value="5">Borsaci</option>
+        <option value="8">Diger</option>
+        <option value="46">Sanatçi</option>
+      </select>
+      <label for="cars">Yaş :</label>
+		  <input type="text" name="Yas" placeholder="Yas" required="required" />
+      <label for="cars">Askerlik Durumu :</label>
+      <select name="Askerlik_Durumu" id="Askerlik_Durumu">
+        <option value="3">Yapıldı</option>
+        <option value="0">Kadın</option>
+        <option value="1">Muaf</option>
+        <option value="2">Tecilli</option>
+      </select>
+      <label for="cars">Talebinin Altında Teklif Var mı? :</label>
+      <select name="Talebinin_Altında_Teklif_VarMi" id="Talebinin_Altında_Teklif_VarMi">
+        <option value="1">Hayır</option>
+        <option value="0">Evet</option>
+      </select>
+      <label for="cars">Son 1 Yıl İcinde GM Tarafindan Ret Edilmis Tahsis Var mı? :</label>
+      <select name="Son_1_Yil_Icinde_GM_Tarafindan_Ret_Edilmis_Tahsis_VarMi" id="Son_1_Yil_Icinde_GM_Tarafindan_Ret_Edilmis_Tahsis_VarMi">
+        <option value="1">Hayır</option>
+        <option value="0">Evet</option>
+      </select>
+      <label for="cars">KKB_Sorgusunda_Kanuni_Takibi_Sorunu_Var_Mi :</label>
+      <select name="KKB_Sorgusunda_Kanuni_Takibi_Sorunu_Var_Mi" id="KKB_Sorgusunda_Kanuni_Takibi_Sorunu_Var_Mi">
+        <option value="1">Hayır</option>
+        <option value="0">Evet</option>
+      </select>
+      <label for="cars">Müsteri Terkin Olmus Avukat Icra Takibine Dusmus mü? :</label>
+      <select name="Müsteri_Terkin_Olmus_Avukat_Icra_Takibine_Dusmus_Mu" id="Müsteri_Terkin_Olmus_Avukat_Icra_Takibine_Dusmus_Mu">
+        <option value="1">Hayır</option>
+        <option value="0">Evet</option>
+      </select>
+      <label for="cars">İkametgah Yılı :</label>
+      <input type="text" name="Ikametgah_Yili" placeholder="Ikametgah_Yili" required="required" />
+      <label for="cars">Oturdugu Ev Durumu :</label>
+      <select name="Oturdugu_Ev_Durumu" id="Oturdugu_Ev_Durumu">
+        <option value="1">Kendine Ait</option>
+        <option value="0">Diger</option>
+        <option value="3">Kira Ödemiyor</option>
+        <option value="2">Kira</option>
+        <option value="4">Lojman</option>
+      </select>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Skoru Getir</button>
+      </div>
+    </form>
+
+   <br>
+   <br>
+   {{ score }}
+   <br>
+   {{ prediction_text }}
+   <br>
+   {{ prediction_aciklama }}
+
+ </div>
+
+
+</body>
+</html>
